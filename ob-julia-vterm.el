@@ -72,7 +72,7 @@ import Logging; let
                 include(\"%s\")
                 # %s %s
             catch e
-                showerror(logger.stream, e, %s)
+                showerror(logger.stream, e.error, %s)
             end
         end
     end
@@ -108,9 +108,10 @@ import Logging; open(\"%s\", \"w\") do io
         end
         result
     catch e
-        msg = sprint(showerror, e, %s)
-        println(logger.stream, msg)
-        println(msg)
+                showerror(stdout, e.error, %s)
+                msg = sprint(showerror, e)
+                println(logger.stream, msg)
+                println() # not sure why you need this, REPL wont run again otherwise
     end
 end #OB-JULIA-VTERM_END\n"))
    (substring uuid 0 8) out-file src-file
