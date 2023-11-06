@@ -116,7 +116,7 @@ end #OB-JULIA-VTERM_END\n"))
    (substring uuid 0 8) out-file src-file
    (if (member "pp" (cdr (assq :result-params params))) "true" "false")
    (if (member "nolimit" (cdr (assq :result-params params))) "true" "false")
-   (if (not (member (cdr (assq :debug params)) '(nil "no"))) "catch_backtrace()" "")))
+   (if (not (member (cdr (assq :debug params)) '(nil "no"))) "catch_backtrace()[1:end-41]" "")))
 
 (defun org-babel-execute:julia-vterm (body params)
   "Execute a block of Julia code with Babel.
